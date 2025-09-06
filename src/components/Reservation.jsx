@@ -18,15 +18,16 @@ const Reservation = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/reservation/send",
-        { firstName, lastName, email, phone, date, time },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
+  `${import.meta.env.VITE_BACKEND_URL}/api/v1/reservation/send`,
+  { firstName, lastName, email, phone, date, time },
+  {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  }
+);
+
       toast.success(data.message);
       setFirstName("");
       setLastName("");
